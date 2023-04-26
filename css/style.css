@@ -1,0 +1,551 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+*{
+  font-family: 'VT323', monospace;
+}
+
+body{
+    margin: 0;
+}
+
+.main-container {
+    background-color: red;
+    height: 100vh;
+  }
+
+  .startOfGame {
+    background-color: rgb(92,219,149);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .chooseChar {
+    background-color: rgb(92,219,149);
+    height: 100vh;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .main-container {
+      height: 50vh;
+    }
+
+  }
+  
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .main-container {
+      height: 70vh;
+    }
+  }
+
+ 
+  #startButton, #exitButton {
+    padding: 10px 20px;
+    font-size: 5vw;
+    background-color: rgb(5,56,107);
+    color: rgb(92,219,149);
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+  }
+
+
+  #startButton:hover, #exitButton:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px 5px rgba(200, 240, 216, 0.8);
+  }
+
+
+  #horizontalDivs {
+    display: flex;
+    flex-direction: row;
+    margin-top: -10%;
+  }
+
+  #horizontalDivs p {
+    font-size: 20px;
+  }
+  
+  .leftDiv, .rightDiv {
+    flex: 1;
+  }
+  
+  .imageDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .imageDiv img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .chooseChar img:hover {
+    transform: scale(1.1);
+  }
+
+  .chooseChar div {
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+  }
+  
+  .chooseChar img {
+    width: 80%;
+    height: auto;
+  }
+
+  .chooseChar .caption {
+    color: rgb(5,56,107);
+    margin-top: 60px;
+    font-size: 36px;
+    font-weight: bold;
+    padding-left: 70px;
+  }
+
+  .welcomePage {
+    background-color: rgb(92,219,149);
+    height: 100vh;
+    display: none;
+    align-items: center;
+  }
+
+  .textRoom1 {
+    color: rgb(5,56,107);
+    position: fixed;
+    text-align: center;
+    font-size: 30px;
+    top: 0;
+    left: 50%;
+    z-index: 1;
+    transform: translateX(-50%);
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+
+
+  .welcomeLeft {
+    height: 100vh;
+    box-sizing: border-box;
+    width: 50%;
+    float: left;
+    background-image: url('../img/background/mountain.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .welcomeRight {
+    height: 100vh;
+    box-sizing: border-box;
+    width: 50%;
+    float: left;
+    background-image: url('../img/background/crossroad.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .welcomeLeft:hover, .welcomeRight:hover{
+    box-shadow: inset 0px 0px 30px #1eff00;
+  }
+
+  .mountainLeft {
+    background-color: rgb(165, 253, 0);
+    height: 100vh;
+    display: none;
+    align-items: center;
+  }
+
+  .splitRight {
+    background-color: rgb(165, 253, 0);
+    height: 100vh;
+    display: none;
+    align-items: center;
+  }
+
+
+  .forestLeft {
+    height: 100vh;
+    box-sizing: border-box;
+    width: 50%;
+    float: left;
+    background-image: url('../img/background/forest.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  .cityRight {
+    height: 100vh;
+    box-sizing: border-box;
+    width: 50%;
+    float: left;
+    background-image: url('../img/background/city.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .forestLeft:hover, .cityRight:hover {
+    box-shadow: inset 0px 0px 30px #1eff00;
+  }
+
+ 
+
+  .fightScreenMountain {
+    background-color: rgb(92,219,149);
+    height: 100vh;
+    display: none;
+    align-items: center;
+  }
+
+.leftMountain {
+  position: relative;
+    height: 100vh;
+    box-sizing: border-box;
+    width: 50%;
+    float: left;
+    background-color: rgb(92,219,149);
+  }
+  .rightMountain {
+    position: relative;
+    height: 100vh;
+    box-sizing: border-box;
+    width: 50%;
+    float: left;
+   background-color: rgb(92,219,149);
+  }
+
+  .player{
+    /*
+   position: absolute ;
+   bottom: 0;
+   left: 0;
+   padding-bottom: 50px;
+   padding-left: 50px;
+   */
+  }
+
+  .enemy{
+ /*   position: absolute ;
+    bottom: 0;
+    right: 0;
+    padding-bottom: 50px;
+    padding-right: 50px;
+    */
+  }
+
+  .buttons{
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  #attack{
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+  }
+
+  #dodge{
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+  }
+
+  #attack,#dodge{
+    margin: 20px auto 0;
+    margin-bottom: 15px;
+    padding: 10px 20px;
+    border: none;
+    font-size: 4vh;
+    background-color: rgb(5,56,107);
+    color: rgb(92,219,149);
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  #attack:hover, #dodge:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px 5px rgba(200, 240, 216, 0.8);
+  }
+
+
+  .winScreen{
+      background-color: rgb(92,219,149);
+      height: 100vh;
+      display:none;
+      text-align: center;
+      align-items: center;
+  }
+
+  .winScreen h2 {
+    padding-top: 20%;
+    margin: 0;
+    color: rgb(5,56,107);
+    font-size: 8vh;
+  }
+
+  .winScreen p {
+    margin: 10px 0;
+    color: rgb(5,56,107);
+    font-size: 2vh;
+  }
+
+  #myButton, #myButtonGolem {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    border: none;
+    background-color: rgb(5,56,107);
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    color: rgb(92,219,149);
+
+  }
+
+  #myButton:hover, #myButtonGolem:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px 5px rgba(200, 240, 216, 0.8);
+  }
+
+  #restart {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    border: none;
+    background-color: #ff0000;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  #restart:hover {
+    transform: scale(1.1);
+    background-color: rgb(255, 0, 0);
+    box-shadow: 0 0 20px 5px rgba(255, 0, 0, 0.8);
+  }
+
+  #card {
+    max-width: 100vh;
+    height: 80vh;
+    background-color: rgba(200, 240, 216, 0.8);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    margin-top: 10vh;
+  }
+
+  #card img {
+    width: 40vh;
+    height: 60vh;
+    max-width: 100%;
+    margin-top: 30px;
+  }
+
+  #card .info {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  #card h2 {
+    margin: 0;
+    font-size: 1.5em;
+  }
+
+  #card .barPlayer {
+    width: 100%;
+    height: 10px;
+    background-color: rgba(200, 240, 216, 0.8);
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+
+  #card .barEnemy {
+    width: 100%;
+    height: 10px;
+    background-color: rgb(200, 240, 216);
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+
+
+  #card .barPlayer .progressPlayer {
+    height: 100%;
+    width: 100%;
+    background-color: #007bff;
+    border-radius: 5px;
+  }
+
+  #card .barEnemy .progressEnemy {
+    height: 100%;
+    width: 100%;
+    background-color: #007bff;
+    border-radius: 5px;
+  }
+
+
+.loseScreen{
+    background-color: rgb(92,219,149);
+    height: 100vh;
+    display:none;
+    text-align: center;
+    align-items: center;
+}
+
+#loseScreen h2 {
+  padding-top: 20%;
+  margin: 0;
+  color: red;
+  font-size: 50px;
+}
+
+#loseScreen p {
+  margin: 10px 0;
+  color: red;
+  font-size: 20px;
+}
+
+.forwardWay{
+    background-color: rgb(201, 176, 176);
+    height: 100vh;
+    display:none;
+    text-align: center;
+    align-items: center;
+    background-image: url('../img/background/lava.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.forwardWay:hover{
+  box-shadow: inset 0px 0px 30px #1eff00;
+}
+
+.splitAfterForward {
+  background-color: rgb(165, 253, 0);
+  height: 100vh;
+  display: none;
+  align-items: center;
+}
+
+
+.pirateCityLeft {
+  height: 100vh;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+  background-image: url('../img/background/piratecity.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.seaRight {
+  height: 100vh;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+  background-image: url('../img/background/sea.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.pirateCityLeft:hover, .seaRight:hover{
+  box-shadow: inset 0px 0px 30px #1eff00;
+}
+
+.wontWork{
+  background-color: rgb(165, 253, 0);
+  height: 100vh;
+  display: none;
+  align-items: center;
+}
+.split{
+  height: 100vh;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+  background-image: url('../img/background/crossroad.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.snow {
+  height: 100vh;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+  background-image: url('../img/background/snow.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.split:hover, .snow:hover{
+  box-shadow: inset 0px 0px 30px #1eff00;
+}
+
+.splitAfLava {
+  background-color: rgb(165, 253, 0);
+  height: 100vh;
+  display: none;
+  align-items: center;
+}
+
+.splitAfLava:hover:after{
+  box-shadow: inset 0px 0px 30px #1eff00;
+}
+
+.splitLeft {
+  height: 100vh;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+  background-image: url('../img/background/crossroad.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.snowRight {
+  height: 100vh;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+  background-image: url('../img/background/snow.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+#splitLeft:hover #nowRight:hover{
+  box-shadow: inset 0px 0px 30px #1eff00;
+}
+
+
