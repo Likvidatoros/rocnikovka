@@ -232,6 +232,7 @@ let player = {
   maxHealth: 100,
   attack: 10,
   dodge: 0.5,
+  critic: 0.2
 };
 
 let enemy = {
@@ -239,16 +240,25 @@ let enemy = {
   health: 100,
   maxHealth: 100,
   attack: 10,
+  critic: 0.4
 };
 
 // ! Hráč útočí
 const attackPlayer = () => {
+  //! critic
+  let chance = Math.round(Math.random() * 10) / 10;
+  if(chance<=player.critic){
+  let damage = player.attack;
+  enemy.health -= damage*3;
+  console.log("critic!")
+  } else{
+  //! normal attack
   let damage = player.attack;
   enemy.health -= damage;
+  console.log("normal attack")
+  }
   document.getElementById("enemyHealth").innerHTML = enemy.health;
   updateHealthBar();
-  console.log((player.health / player.maxHealth) * 100)
-  console.log((enemy.health / enemy.maxHealth) * 100)
   if (checkGameOver()) {
     return;
   }
@@ -276,12 +286,19 @@ dodgeButton.onclick = dodgePlayer;
 
 // ! nepřítel utočí
 const attackEnemy = () => {
-  let damage = enemy.attack;
-  player.health -= damage;
+  let chance = Math.round(Math.random() * 10) / 10;
+  if(chance<=enemy.critic){
+    let damage = enemy.attack;
+    player.health -= damage*3;
+    console.log("enemy critic!")
+  }else{
+    let damage = enemy.attack;
+    player.health -= damage;
+    console.log("enemy normal attack")
+  }
   player.health === document.getElementById("playerHealth").style.width == 100 + "%";
   document.getElementById("playerHealth").innerHTML = player.health;
   updateHealthBar();
-  console.log(updateHealthBar())
   if (checkGameOver()) {
     return;
   }
